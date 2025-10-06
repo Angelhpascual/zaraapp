@@ -1,11 +1,7 @@
-import { defineConfig } from "vite"
-import react from "@vitejs/plugin-react"
-import tailwindcss from "@tailwindcss/vite"
-import path from "path"
+import { defineConfig } from "vitest/config"
+import path from "node:path"
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@domain": path.resolve(__dirname, "src/domain"),
@@ -14,5 +10,10 @@ export default defineConfig({
       "@shared": path.resolve(__dirname, "src/shared"),
       "@presentation": path.resolve(__dirname, "src/presentation"),
     },
+  },
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: ["./vitest.setup.ts"],
   },
 })
