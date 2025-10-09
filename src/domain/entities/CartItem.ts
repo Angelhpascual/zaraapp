@@ -22,6 +22,9 @@ export class CartItem {
   }
 
   increase(amount: number) {
+    if (amount <= 0) {
+      throw new Error("Invalid amount")
+    }
     return CartItem.create({
       product: this.product,
       quantity: this.quantity + amount,
