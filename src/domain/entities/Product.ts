@@ -42,4 +42,20 @@ export class Product {
   get price() {
     return this.props.price
   }
+
+  get description() {
+    return this.props.description
+  }
+
+  get category() {
+    return this.props.category
+  }
+
+  get image() {
+    return this.props.image
+  }
+
+  get rating() {
+    return this.props.rating
+  }
 }
