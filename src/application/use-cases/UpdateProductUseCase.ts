@@ -1,4 +1,3 @@
-import type { Product } from "../../domain/entities/Product"
 import { err, ok, type Result } from "../../shared/Result"
 import type { UpdateProductDTO } from "../DTOs/ProductDTOs/UpdateProductDTO"
 import type { ProductRepository } from "../ports/ProductRepository"

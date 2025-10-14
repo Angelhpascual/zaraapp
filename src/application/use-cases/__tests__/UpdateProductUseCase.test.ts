@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 import { Product } from "../../../domain/entities/Product"
 import { ProductRepositoryMock } from "../../../shared/ProductRepositoryMock"
-import { UpdateProductUseCase } from "../UpdateProductCase"
+import { UpdateProductUseCase } from "../UpdateProductUseCase"
 
 const baseProduct = Product.create({
   id: 1,
