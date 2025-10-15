@@ -1,5 +1,5 @@
-import type { ProductRepository } from "../application/ports/ProductRepository"
-import type { Product } from "../domain/entities/Product"
+import type { ProductRepository } from '../application/ports/ProductRepository'
+import type { Product } from '../domain/entities/Product'
 
 export class ProductRepositoryMock implements ProductRepository {
   private items = new Map<number, Product>()

@@ -1,7 +1,7 @@
-import { Session } from "../../domain/entities/Session"
+import type { Session } from '../../domain/entities/Session'
 
 export interface AuthRepository {
-  login(username: string, password: string): Promise<Session>
-  logout(): Promise<void>
-  getSession(): Promise<Session | null>
+  login: (username: string, password: string) => Promise<Session>
+  logout: () => Promise<void>
+  getSession: () => Promise<Session | null>
 }

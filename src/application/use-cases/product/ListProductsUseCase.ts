@@ -1,7 +1,8 @@
-import type { Product } from "../../domain/entities/Product"
-import { err, ok, type Result } from "../../shared/Result"
-import type { CreateProductDTO } from "../DTOs/ProductDTOs/CreateProductDTO"
-import type { ProductRepository } from "../ports/ProductRepository"
+import type { Product } from '../../../domain/entities/Product'
+import type { Result } from '../../../shared/Result'
+import type { CreateProductDTO } from '../../DTOs/ProductDTOs/CreateProductDTO'
+import type { ProductRepository } from '../../ports/ProductRepository'
+import { err, ok } from '../../../shared/Result'
 
 export type ListProductResponse = Result<CreateProductDTO[]>
 
@@ -16,7 +17,8 @@ export class ListProductUseCase {
     try {
       const products = await this.productRepository.findAll()
       return ok(products.map(this.toDTO))
-    } catch (error) {
+    }
+    catch (error) {
       return err(error instanceof Error ? error : new Error(String(error)))
     }
   }

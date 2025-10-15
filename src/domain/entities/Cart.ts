@@ -1,4 +1,4 @@
-import type { CartItem } from "./CartItem"
+import type { CartItem } from './CartItem'
 
 export class Cart {
   private readonly items: Map<number, CartItem>
@@ -25,7 +25,8 @@ export class Cart {
 
     if (existing) {
       next.set(newItem.productId, existing.increase(newItem.totalQuantity))
-    } else {
+    }
+    else {
       next.set(newItem.productId, newItem)
     }
     return new Cart(next)

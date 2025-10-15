@@ -1,7 +1,8 @@
-import { Product } from "../../domain/entities/Product"
-import { err, ok, type Result } from "../../shared/Result"
-import type { CreateProductDTO } from "../DTOs/ProductDTOs/CreateProductDTO"
-import type { ProductRepository } from "../ports/ProductRepository"
+import type { Result } from '../../../shared/Result'
+import type { CreateProductDTO } from '../../DTOs/ProductDTOs/CreateProductDTO'
+import type { ProductRepository } from '../../ports/ProductRepository'
+import { Product } from '../../../domain/entities/Product'
+import { err, ok } from '../../../shared/Result'
 
 export type CreateProductResponse = Result<void>
 
@@ -17,7 +18,8 @@ export class CreateProductUseCase {
       const product = Product.create(input)
       await this.productRepository.create(product)
       return ok(undefined)
-    } catch (error) {
+    }
+    catch (error) {
       return err(error instanceof Error ? error : new Error(String(error)))
     }
   }

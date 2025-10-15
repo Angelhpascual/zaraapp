@@ -1,5 +1,5 @@
-import type { CartItemDTO } from "./CartItemDTO"
-import type { CartTotalDTO } from "./CartTotalDTO"
+import type { CartItemDTO } from './CartItemDTO'
+import type { CartTotalDTO } from './CartTotalDTO'
 
 export interface CartDTO {
   items: CartItemDTO[]
