@@ -1,4 +1,4 @@
-import type { Product } from "./Product"
+import type { Product } from './Product'
 
 export interface CartItemProps {
   product: Product
@@ -16,14 +16,14 @@ export class CartItem {
 
   static create(props: CartItemProps): CartItem {
     if (props.quantity <= 0) {
-      throw new Error("Invalid quantity")
+      throw new Error('Invalid quantity')
     }
     return new CartItem(props)
   }
 
   increase(amount: number) {
     if (amount <= 0) {
-      throw new Error("Invalid amount")
+      throw new Error('Invalid amount')
     }
     return CartItem.create({
       product: this.product,

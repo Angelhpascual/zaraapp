@@ -1,29 +1,29 @@
-import { describe, expect, it } from "vitest"
-import { Product } from "../Product"
-import { mockProduct } from "../../../shared/mocks/mockProduct"
+import { describe, expect, it } from 'vitest'
+import { mockProduct } from '../../../shared/mocks/mockProduct'
+import { Product } from '../Product'
 
-describe("Product", () => {
-  it("should create a product", () => {
+describe('product', () => {
+  it('should create a product', () => {
     const product = Product.create(mockProduct)
 
-    expect(product.title).toBe("Product 1")
+    expect(product.title).toBe('Product 1')
     expect(product.price).toBe(10)
   })
 
-  it("throw an error when the title is invalid", () => {
-    expect(() => Product.create({ ...mockProduct, title: " " })).toThrow(
-      "Invalid title"
+  it('throw an error when the title is invalid', () => {
+    expect(() => Product.create({ ...mockProduct, title: ' ' })).toThrow(
+      'Invalid title',
     )
   })
 
-  it("thown an error when the price is <= 0", () => {
+  it('thown an error when the price is <= 0', () => {
     expect(() => Product.create({ ...mockProduct, price: 0 })).toThrow(
-      "Invalid price"
+      'Invalid price',
     )
   })
 
-  it("update mantains immutability", () => {
+  it('update mantains immutability', () => {
     const product = Product.create(mockProduct)
-    expect(() => product.update({ price: -5 })).toThrow("Invalid price")
+    expect(() => product.update({ price: -5 })).toThrow('Invalid price')
   })
 })

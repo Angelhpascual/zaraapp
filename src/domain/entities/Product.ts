@@ -20,10 +20,10 @@ export class Product {
 
   static create(props: ProductProps): Product {
     if (!props.title?.trim()) {
-      throw new Error("Invalid title")
+      throw new Error('Invalid title')
     }
     if (props.price <= 0) {
-      throw new Error("Invalid price")
+      throw new Error('Invalid price')
     }
     return new Product(props)
   }
@@ -39,6 +39,7 @@ export class Product {
   get title() {
     return this.props.title
   }
+
   get price() {
     return this.props.price
   }
