@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 import { Product } from "../../../domain/entities/Product"
 import { ProductRepositoryMock } from "../../../shared/ProductRepositoryMock"
-import { ListProductUseCase } from "../ListProductUseCase"
+import { ListProductUseCase } from "../ListProductsUseCase"
 import type { ProductRepository } from "../../ports/ProductRepository"
 
 const baseProduct = {
