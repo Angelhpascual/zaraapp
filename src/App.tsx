@@ -1,7 +1,8 @@
+import { AppRoutes } from './presentation/routes/AppRoutes'
 import './App.css'
 
 function App() {
-  return <div className="text-5xl font-bold text-slate-300">BOMBOCLÁ</div>
+  return <AppRoutes />
 }
 
 export default App
