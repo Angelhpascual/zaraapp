@@ -49,4 +49,28 @@ export class CartItem {
   get totalQuantity(): number {
     return this.quantity
   }
+
+  get productTitle(): string {
+    return this.product.title
+  }
+
+  get productPrice(): number {
+    return this.product.price
+  }
+
+  get productImage(): string {
+    return this.product.image
+  }
+
+  get productDescription(): string {
+    return this.product.description
+  }
+
+  get productCategory(): string {
+    return this.product.category
+  }
+
+  get productRating() {
+    return this.product.rating
+  }
 }

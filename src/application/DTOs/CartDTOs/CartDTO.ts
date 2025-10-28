@@ -3,5 +3,5 @@ import type { CartTotalDTO } from './CartTotalDTO'
 
 export interface CartDTO {
   items: CartItemDTO[]
-  total: CartTotalDTO
+  totals: CartTotalDTO
 }

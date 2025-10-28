@@ -1,23 +1,23 @@
+import { create } from 'zustand'
 import type { CartItemDTO } from '../../application/DTOs/CartDTOs/CartItemDTO'
 import type { CartTotalDTO } from '../../application/DTOs/CartDTOs/CartTotalDTO'
-import { create } from 'zustand'
 import {
   addItemToCartUseCase,
   clearCartUseCase,
-  computeCartTotalUseCase,
+  getCartUseCase,
   removeItemFromCartUseCase,
   updateCartItemUseCase,
 } from '../../application'
 
-interface CartState {
+type CartState = {
   items: CartItemDTO[]
   totals: CartTotalDTO
   isLoading: boolean
   error: string | null
 }
 
-interface CartActions {
-  loadTotals: () => Promise<void>
+type CartActions = {
+  loadCart: () => Promise<void>
   addItem: (productId: number, quantity: number) => Promise<void>
   updateQuantity: (productId: number, quantity: number) => Promise<void>
   removeItem: (productId: number) => Promise<void>
@@ -35,10 +35,10 @@ export const useCartStore = create<CartState & CartActions>((set, get) => ({
   isLoading: false,
   error: null,
 
-  loadTotals: async () => {
-    const result = await computeCartTotalUseCase.execute()
+  loadCart: async () => {
+    const result = await getCartUseCase.execute()
     if (result.ok) {
-      set({ totals: result.value })
+      set({ items: result.value.items, totals: result.value.totals, error: null })
     }
     else {
       set({ error: result.error.message })
@@ -50,7 +50,7 @@ export const useCartStore = create<CartState & CartActions>((set, get) => ({
     const result = await addItemToCartUseCase.execute({ productId, quantity })
 
     if (result.ok) {
-      await get().loadTotals()
+      await get().loadCart()
       set({ isLoading: false })
     }
     else {
@@ -63,7 +63,7 @@ export const useCartStore = create<CartState & CartActions>((set, get) => ({
     const result = await updateCartItemUseCase.execute(productId, quantity)
 
     if (result.ok) {
-      await get().loadTotals()
+      await get().loadCart()
       set({ isLoading: false })
     }
     else {
@@ -76,7 +76,7 @@ export const useCartStore = create<CartState & CartActions>((set, get) => ({
     const result = await removeItemFromCartUseCase.execute(productId)
 
     if (result.ok) {
-      await get().loadTotals()
+      await get().loadCart()
       set({ isLoading: false })
     }
     else {

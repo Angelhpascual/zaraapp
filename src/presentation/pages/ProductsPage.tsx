@@ -5,7 +5,7 @@ import { useProducts } from '../hooks/useProducts'
 
 export function ProductsPage() {
   const { products, isLoading, error, refetch } = useProducts()
-  const { addItem, isLoading: cartLoading, error: cartError, totals } = useCart()
+  const { totals, addItem, isLoading: cartLoading, error: cartError } = useCart()
 
   if (isLoading) {
     return <div className="text-center py-12 text-lg font-medium">Loading products...</div>
@@ -20,7 +20,7 @@ export function ProductsPage() {
         </p>
         <button
           type="button"
-          onClick={() => refetch()}
+          onClick={() => void refetch()}
           className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
         >
           Reintentar
@@ -42,7 +42,7 @@ export function ProductsPage() {
         )}
         <Link to="/cart" className="inline-flex items-center gap-2 rounded bg-gray-900 px-4 py-2 text-white hover:bg-gray-800">
           <ShoppingCartIcon className="h-5 w-5" aria-hidden="true" />
-
+          <span>Carrito</span>
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-sm font-semibold text-gray-900">{totals.totalItems}</span>
         </Link>
       </header>
